@@ -389,16 +389,17 @@ function useScrollY() {
 function useInView(threshold) {
   const ref = useRef(null);
   const [v, setV] = useState(false);
+  const t = threshold || 0.08;
   useEffect(() => {
     const obs = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) setV(true);
       },
-      { threshold: threshold || 0.08 },
+      { threshold: t },
     );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
-  }, []);
+  }, [t]);
   return [ref, v];
 }
 
@@ -465,7 +466,7 @@ function useHorizontalDrag(ref) {
       el.removeEventListener("touchend", up);
       el.removeEventListener("touchmove", move);
     };
-  }, []);
+  }, [ref]);
 }
 
 function Label({ text }) {
@@ -949,7 +950,7 @@ export default function App() {
               lineHeight: 1.1,
             }}
           >
-            Alexander
+            Mustermann
           </div>
           <div
             style={{
@@ -961,7 +962,7 @@ export default function App() {
               lineHeight: 1.1,
             }}
           >
-            Brenner
+            Konzertpianist
           </div>
         </button>
 
@@ -1003,7 +1004,7 @@ export default function App() {
               borderLeft: "1px solid rgba(191,160,122,.2)",
             }}
           >
-            {["de", "en", "ru"].map((l, i) => (
+            {["de", "en", "ru"].map((l, idx) => (
               <span key={l} style={{ display: "flex", alignItems: "center" }}>
                 <button
                   onClick={() => setLocale(l)}
@@ -1023,7 +1024,7 @@ export default function App() {
                 >
                   {l.toUpperCase()}
                 </button>
-                {i < 2 && (
+                {idx < 2 && (
                   <span
                     style={{ color: "rgba(191,160,122,.25)", fontSize: 10 }}
                   >
@@ -1273,9 +1274,11 @@ export default function App() {
               animation: "fu .95s ease .5s forwards",
             }}
           >
-            Alexander
+            Mustermann
             <br />
-            <em style={{ fontWeight: 300, color: "#CCB898" }}>Brenner</em>
+            <em style={{ fontWeight: 300, color: "#CCB898" }}>
+              Konzertpianist
+            </em>
           </h1>
           <div
             style={{
@@ -2243,7 +2246,7 @@ export default function App() {
                 letterSpacing: ".06em",
               }}
             >
-              Alexander <em>Brenner</em>
+              Mustermann <em>Konzertpianist</em>
             </p>
             <p
               className="j"
@@ -2294,7 +2297,7 @@ export default function App() {
                 borderLeft: "1px solid rgba(191,160,122,.12)",
               }}
             >
-              {["de", "en", "ru"].map((l, i) => (
+              {["de", "en", "ru"].map((l, idx) => (
                 <span key={l} style={{ display: "flex", alignItems: "center" }}>
                   <button
                     onClick={() => setLocale(l)}
@@ -2313,7 +2316,7 @@ export default function App() {
                   >
                     {l.toUpperCase()}
                   </button>
-                  {i < 2 && (
+                  {idx < 2 && (
                     <span
                       style={{ color: "rgba(191,160,122,.15)", fontSize: 10 }}
                     >
