@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alexander Brenner — Pianist Web Application
 
-## Getting Started
+Professionelle, mehrsprachige Künstlerwebsite für einen Konzertpianisten.  
+Gebaut mit **Next.js 15**, **TypeScript**, **Tailwind CSS** und **Sanity CMS**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Projektstruktur & Dokumentation
+
+| Datei                                                | Inhalt                                      |
+| ---------------------------------------------------- | ------------------------------------------- |
+| [PROJECT.md](./PROJECT.md)                           | Ziele, Tech Stack, ADRs, Scope              |
+| [ARCHITECTURE.md](./ARCHITECTURE.md)                 | Ordnerstruktur, Datenfluß, Routing          |
+| [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)               | Farben, Typografie, Komponenten, Responsive |
+| [CMS_SCHEMA.md](./CMS_SCHEMA.md)                     | Alle Sanity Schemas mit TypeScript          |
+| [CODING_STANDARDS.md](./CODING_STANDARDS.md)         | Konventionen, Patterns, Git-Workflow        |
+| [CMS_BENUTZERHANDBUCH.md](./CMS_BENUTZERHANDBUCH.md) | Anleitung für den Künstler                  |
+
+---
+
+## Design-Philosophie
+
+> _„Weniger ist mehr — das Design dient der Musik."_
+
+- Cinematisches, dunkles Farbschema
+- Parallax-Hero mit subtilen Bewegungseffekten
+- Dreisprachig: Deutsch · English · Русский
+- Scroll-Reveal-Animationen, horizontales Album-Carousel
+- Mobile-first, vollständig responsive
+
+---
+
+## Tech Stack
+
+```
+Next.js 15 (App Router)     Routing, SSG/ISR, Server Components
+TypeScript (strict)          Typsicherheit
+Tailwind CSS                 Utility-first Styling
+Sanity.io v3                 CMS + embedded Studio at /studio
+next-intl                    i18n (DE / EN / RU)
+Resend                       Kontaktformular E-Mail API
+Vercel                       Deployment + Edge Network
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Starten
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cd musician-website
+npm install
+npm run dev
+# → http://localhost:3000
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`git push` auf `main` → automatisches Vercel-Deploy (~2 min)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Live: `https://musician-web-app.vercel.app`
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Sprachen
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Code | Sprache            | Route |
+| ---- | ------------------ | ----- |
+| `de` | Deutsch (Standard) | `/`   |
+| `en` | English            | `/en` |
+| `ru` | Русский            | `/ru` |
